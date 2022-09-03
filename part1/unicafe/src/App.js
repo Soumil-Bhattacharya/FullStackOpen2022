@@ -20,7 +20,10 @@ const App = () => {
       <h1>statistics</h1>
       good {good}<br></br>
       neutral {neutral}<br></br>
-      bad {bad}
+      bad {bad}<br></br> 
+      all {good + bad + neutral}<br></br> 
+      average {(good + bad + neutral)?(good - bad)/(good + bad + neutral):0}<br></br>
+      positive {(good + bad + neutral)?100*good/(good + bad + neutral):0} %
     </div>
   )
 }
