@@ -6,17 +6,31 @@ const Button = ({text, onClick}) => (
     </button>
 )
 
-const Statistics = ({good, neutral, bad}) => (
-  <div>
-    <h1>statistics</h1>
-      good {good}<br></br>
-      neutral {neutral}<br></br>
-      bad {bad}<br></br> 
-      all {good + bad + neutral}<br></br> 
-      average {(good + bad + neutral)?(good - bad)/(good + bad + neutral):0}<br></br>
-      positive {(good + bad + neutral)?100*good/(good + bad + neutral):0} %
-  </div>
-)
+const Statistics = ({good, neutral, bad}) => {
+  if(good || neutral || bad){
+
+    return (
+      <div>
+        <h1>statistics</h1>
+          good {good}<br></br>
+          neutral {neutral}<br></br>
+          bad {bad}<br></br> 
+          all {good + bad + neutral}<br></br> 
+          average {(good + bad + neutral)?(good - bad)/(good + bad + neutral):0}<br></br>
+          positive {(good + bad + neutral)?100*good/(good + bad + neutral):0} %
+      </div>
+    )
+  }
+  else{
+    return (
+      <div>
+        <h1>statistics</h1>
+          No feedback given
+      </div>
+      
+    )
+  }
+}
 
 const App = () => {
   const [good, setGood] = useState(0)
