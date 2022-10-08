@@ -1,5 +1,12 @@
 import { useState } from 'react'
 
+
+const Button = ({text, onClick}) => (
+    <button onClick={onClick}>
+        {text}
+    </button>
+)
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -12,10 +19,26 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState([0,0,0,0,0,0,0])
 
   return (
     <div>
-      {anecdotes[selected]}
+      {anecdotes[selected]}<br></br>
+      has {votes[selected]} votes
+      <Button 
+        onClick={()=>setVotes([
+          ...votes.slice(0,selected),
+          votes[selected]+1,
+          ...votes.slice(selected+1)
+        ])}
+        text= {'vote'}
+      />
+      <Button 
+        onClick={()=>setSelected((selected + 1)%7)}
+        text= {'next anecdote'}
+      />
+
+
     </div>
   )
 }
