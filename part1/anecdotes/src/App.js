@@ -23,8 +23,10 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
+      <p>
       {anecdotes[selected]}<br></br>
-      has {votes[selected]} votes
+      has {votes[selected]} votes<br></br>
       <Button 
         onClick={()=>setVotes([
           ...votes.slice(0,selected),
@@ -37,7 +39,13 @@ const App = () => {
         onClick={()=>setSelected((selected + 1)%7)}
         text= {'next anecdote'}
       />
+      </p>
 
+      <h1>Anecdote with most votes</h1>
+      <p>
+      {anecdotes[votes.indexOf(Math.max(...votes))]}<br></br>
+      has {votes[votes.indexOf(Math.max(...votes))]} votes
+      </p>
 
     </div>
   )
